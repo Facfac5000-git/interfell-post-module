@@ -18,3 +18,5 @@ Route::resource('posts', PostController::class)
     ->middleware('auth:sanctum');
 
 Route::get('posts', [PostController::class, 'getPage']);
+
+Route::get('fetch', [PostController::class, 'fetch']);

@@ -11,7 +11,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','description','publication_date'];
+    protected $fillable = ['title','description','publication_date', 'user_id'];
 
     public $timestamps = false;
 
