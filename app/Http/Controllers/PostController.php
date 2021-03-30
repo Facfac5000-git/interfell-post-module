@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 
 use App\Models\Post;
+use Inertia\Inertia;
 
 class PostController extends Controller
 {
@@ -19,8 +20,9 @@ class PostController extends Controller
 
     }
 
-    public function show(Post $post){
-
+    public function show($post_id){
+        $post = Post::find($post_id);
+        return Inertia::render('Posts/Show', ['post' => $post]);
     }
 
     public function getPage(){

@@ -4,13 +4,13 @@
     <section class="text-gray-600 body-font overflow-hidden py-24">
 
         <div class="max-w-7xl mx-auto">
-            <p class="text-4xl font-bold text-gray-900">¡Bienvenido nuevamente, {{$page.props.user.name}}!</p>
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-4 pt-4">
+            <p class="text-4xl font-bold text-gray-900">Welcome back, {{$page.props.user.name}}!</p>
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg m-4 pt-4">
                 <div class="md:grid md:grid-cols-3 md:gap-6 ">
                     <div class="col-span-2">
                         <div class="px-4 sm:px0">
-                            <h3 class="text-xl text-gray-900 font-bold">Listado de Posts</h3>
-                            <p class="text-sm text-gray-600">¡Observa cada post con el cual has contribuido a nuestra comunidad!</p>
+                            <h3 class="text-xl text-gray-900 font-bold">Post's List</h3>
+                            <p class="text-sm text-gray-600">Here you can watch every post you made to contribute to our community!</p>
                         </div>
                     </div>
                     <div class="col-span-1">
@@ -38,7 +38,7 @@
                                     {{ post.publication_date }}
                                 </td>
                                 <td class="border p-2 w-1/6" >
-                                    <inertia-link :href="route('posts.show', post.id)" class="hover:text-green-500">
+                                    <inertia-link :href="route('posts.show', post)" class="hover:text-green-500">
                                         Look it!
                                     </inertia-link>
                                 </td>

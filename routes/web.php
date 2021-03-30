@@ -15,9 +15,9 @@ Route::get('dashboard', [PageController::class, 'dashboard'])
     ->middleware('auth:sanctum')
     ->name('dashboard');
 
-Route::get('userArea', [PageController::class, 'userArea'])
+Route::get('index', [PageController::class, 'userArea'])
     ->middleware('auth:sanctum')
-    ->name('userArea');
+    ->name('index');
 
 Route::get('posts', [PostController::class, 'getPage']);
 

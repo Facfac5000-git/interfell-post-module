@@ -16,13 +16,13 @@ class PageController extends Controller
     }
 
     public function index() {
-        return Inertia::render('Welcome', [
+        return Inertia::render('Posts/Welcome', [
             'canLogin' => Route::has('login'),
         ]);
     }
 
     public function userArea() {
-        return Inertia::render('UserArea', [
+        return Inertia::render('Posts/Index', [
             'user' => Auth::user(),
         ]);
     }

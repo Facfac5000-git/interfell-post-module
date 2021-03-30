@@ -31,7 +31,7 @@
                             Manage Account
                         </div>
 
-                        <jet-dropdown-link :href="route('userArea')" class="hover:text-indigo">
+                        <jet-dropdown-link :href="route('index')" class="hover:text-indigo">
                             Profile
                         </jet-dropdown-link>
 
