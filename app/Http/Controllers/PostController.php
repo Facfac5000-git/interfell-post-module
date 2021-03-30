@@ -11,8 +11,29 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    public function create(){
+
+    }
+
+    public function store(Request $request){
+
+    }
+
+    public function show(Post $post){
+
+    }
+
     public function getPage(){
-        return Post::with('user')->orderBy('publication_date','desc')->paginate(10);
+        return Post::with('user')
+            ->orderBy('publication_date','desc')
+            ->paginate(10);
+    }
+
+    public function getPagebyUser($user_id){
+        return Post::with('user')
+            ->where('user_id', $user_id)
+            ->orderBy('publication_date','desc')
+            ->paginate(10);
     }
 
     public function fetch(){

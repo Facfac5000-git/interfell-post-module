@@ -155,9 +155,6 @@
             this.getPosts();
         },
         methods: {
-            logout() {
-                this.$inertia.post(route('logout'));
-            },
             getPosts(){
                 Http.get('/posts').then(
                     (response) => {this.posts = response.data}
