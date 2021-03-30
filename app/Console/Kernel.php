@@ -32,6 +32,9 @@ class Kernel extends ConsoleKernel
             ->evenInMaintenanceMode()
             ->hourly()
             ->sendOutputTo(storage_path('logs/fetched_posts.log'));
+
+        //Cron command to execute the scheduler on foreground
+        //* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
     }
 
     /**
