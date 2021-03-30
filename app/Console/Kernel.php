@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Console\Commands\FetchPostsCommand;
+use App\Http\Controllers\PostController;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +15,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        FetchPostsCommand::class,
     ];
 
     /**
@@ -24,7 +26,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command(FetchPostsCommand::class)
+            ->name('fetch_posts_via_api')
+            ->onOneServer()
+            ->evenInMaintenanceMode()
+            ->hourly()
+            ->sendOutputTo(storage_path('logs/fetched_posts.log'));
     }
 
     /**

@@ -1,21 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-
-use GuzzleHttp\Client;
+namespace App\Console\Commands;
 
 use App\Models\Post;
+use GuzzleHttp\Client;
+use Illuminate\Console\Command;
 
-class PostController extends Controller
+class FetchPostsCommand extends Command
 {
-    public function getPage(){
-        return Post::with('user')->orderBy('publication_date','desc')->paginate(10);
+
+    protected $signature = 'fetch:posts';
+
+
+    protected $description = 'This commands allows the server to fetch the new posts from sq1-api-test.herokuapp.com';
+
+
+    public function __construct()
+    {
+        parent::__construct();
     }
 
-    public function fetch(){
+    public function handle()
+    {
         $client = new Client();
         $response = $client->get('https://sq1-api-test.herokuapp.com/posts');
         $json_response = json_decode($response->getBody()->getContents());
@@ -26,7 +32,7 @@ class PostController extends Controller
                 'publication_date' => $post->publication_date,
                 'user_id' => 1
             ]);
-            echo $new_post.'<br>';
+            echo $new_post."\n";
         }
     }
 }
