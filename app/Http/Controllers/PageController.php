@@ -16,9 +16,7 @@ class PageController extends Controller
     }
 
     public function index() {
-        return Inertia::render('Posts/Welcome', [
-            'canLogin' => Route::has('login'),
-        ]);
+        return Inertia::render('Posts/Welcome');
     }
 
     public function userArea() {

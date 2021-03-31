@@ -9,29 +9,35 @@
                 <div class="md:grid md:grid-cols-3 md:gap-6 ">
                     <div class="col-span-3">
                         <div class="px-4 sm:px0">
-                            <h3 class="text-xl text-gray-900 font-bold">Post's Visualization</h3>
-                            <p class="text-sm text-gray-600">Take a look to every post you gave to our posty blog.</p>
+                            <h3 class="text-xl text-gray-900 font-bold">New Post</h3>
+                            <p class="text-sm text-gray-600">Here you can create a new post for our blog, share whatever you want with our comunity!</p>
                         </div>
                     </div>
                     <div class="col-span-3 mt-5">
                         <div class="shadow bg-white md:rounded-md">
-                            <p class="text-2xl font-semibold">Title:</p>
-                            <p>{{post.title}}</p>
-                            <hr class="my-2">
-                            <p class="text-2xl font-semibold">Publication Date: </p>
-                            <p>{{post.publication_date}}</p>
-                            <hr class="my-2">
-                            <p class="text-2xl font-semibold">Description:</p>
-                            <p v-html="post.description"></p>
+                            <form @submit.prevent="submit">
+                                <div class="mb-4">
+                                    <label for="title" class="block font-medium text-sm text-gray-700">Title:</label>
+                                    <input id="title" class="form-input w-full rounded-md shadow-sm" v-model="form.title" type="text">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block font-medium text-sm text-gray-700">Description:</label>
+                                    <quill-editor theme="snow"></quill-editor>
+                                </div>
 
-                            <div class="my-6 mx-auto">
-                                <inertia-link
-                                    class="bg-indigo-500 text-white font-bold py-2 px-4 mx-auto rounded-md w-1/2 md:w-2/5 hover:bg-indigo-800 text-center md:text-left"
-                                    :href="route('index')">
-                                    Go back
-                                </inertia-link>
+                                <div class="mb-4">
+                                    <input type="submit" value="Save" class="bg-indigo-500 hover:bg-indigo-800 text-white font-bold mx-6 py-2 px-4 rounded-md cursor-pointer">
 
-                            </div>
+                                    <inertia-link
+                                        class="bg-indigo-500 text-white font-bold py-2 px-4 mx-auto rounded-md w-1/2 md:w-2/5 hover:bg-indigo-800 text-center md:text-left"
+                                        :href="route('index')">
+                                        Go back
+                                    </inertia-link>
+
+                                </div>
+
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -45,6 +51,10 @@
 </template>
 
 <style scoped>
+
+    .ql-container{
+        min-height: 200px;
+    }
 
     .bg-gray-100 {
         background-color: #f7fafc;
@@ -113,24 +123,36 @@
     import PartialHeader from '@/Partials/Header'
     import PartialFooter from '@/Partials/Footer'
 
+    import { QuillEditor } from '@vueup/vue-quill'
+    import '@vueup/vue-quill/dist/vue-quill.snow.css';
+
+
     export default {
         components: {
             PartialHeader,
-            PartialFooter
+            PartialFooter,
+            QuillEditor,
         },
         props: {
-            post: Object,
+
         },
         data() {
             return {
-                post: this.post,
+                form: {
+                    title: '',
+                    description: ''
+                }
             }
         },
         mounted() {
-
         },
         methods: {
-
+            submit(){
+                this.form.description = document.querySelector(".ql-editor").innerHTML;
+                console.log(this.form.description);
+                console.log(this.form);
+                this.$inertia.post(this.route('posts.store'), this.form);
+            }
         }
     }
 </script>

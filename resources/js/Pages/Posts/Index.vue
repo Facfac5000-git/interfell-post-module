@@ -179,7 +179,6 @@
             PartialFooter
         },
         props: {
-            canRegister: Boolean,
             user: Object,
         },
         data() {
@@ -190,12 +189,8 @@
         },
         mounted() {
             this.getPostsbyUser();
-            console.log(this.posts);
         },
         methods: {
-            logout() {
-                this.$inertia.post(route('logout'));
-            },
             getPostsbyUser(){
                 Http.get('/posts/'+this.user.id).then(
                     (response) => {this.posts = response.data}

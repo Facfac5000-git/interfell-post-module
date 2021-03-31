@@ -11,7 +11,7 @@
                     </div>
                     <div class="md:flex-grow">
                         <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{post.title}}</h2>
-                        <p class="leading-relaxed">{{post.description}}</p>
+                        <p v-html="post.description"></p>
                     </div>
                 </div>
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 use GuzzleHttp\Client;
@@ -13,11 +15,23 @@ use Inertia\Inertia;
 class PostController extends Controller
 {
     public function create(){
-
+        return Inertia::render('Posts/Create');
     }
 
     public function store(Request $request){
+        $request->validate([
+           'title' => 'required',
+           'description' => 'required'
+        ]);
 
+        Post::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'publication_date' => Carbon::now(),
+            'user_id' =>  Auth::id(),
+        ]);
+
+        return redirect()->route('index');
     }
 
     public function show($post_id){

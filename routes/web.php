@@ -9,7 +9,7 @@ use App\Http\Controllers\PostController;
 
 
 Route::get('/', [PageController::class, 'index'])
-    ->name('index');
+    ->name('welcome');
 
 Route::get('dashboard', [PageController::class, 'dashboard'])
     ->middleware('auth:sanctum')
@@ -22,14 +22,18 @@ Route::get('index', [PageController::class, 'userArea'])
 Route::get('posts', [PostController::class, 'getPage']);
 
 Route::get('posts/create', [PostController::class, 'create'])
+    ->middleware('auth:sanctum')
     ->name('posts.create');
 
 Route::post('posts', [PostController::class, 'store'])
+    ->middleware('auth:sanctum')
     ->name('posts.store');
 
 Route::get('posts/show/{post_id}', [PostController::class, 'show'])
+    ->middleware('auth:sanctum')
     ->name('posts.show');
 
-Route::get('posts/{user_id}', [PostController::class, 'getPagebyUser']);
+Route::get('posts/{user_id}', [PostController::class, 'getPagebyUser'])
+    ->middleware('auth:sanctum');
 
 Route::get('fetch', [PostController::class, 'fetch']);
