@@ -1,12 +1,12 @@
 <template>
     <partial-header/>
 
-    <section class="text-gray-600 body-font overflow-hidden py-24">
+    <section class="text-gray-600 body-font overflow-hidden pt-24 pb-8">
 
         <div class="max-w-7xl mx-auto">
-            <p class="text-4xl font-bold text-gray-900">¡Welcome, {{$page.props.user.name}}!</p>
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg m-4 pt-4">
-                <div class="md:grid md:grid-cols-3 md:gap-6 ">
+            <p class="m-4 text-4xl font-bold text-gray-900">¡Welcome, {{$page.props.user.name}}!</p>
+            <div class="bg-white overflow-hidden sm:rounded-lg m-4 p-4">
+                <div class="grid grid-cols-3">
                     <div class="col-span-3">
                         <div class="px-4 sm:px0">
                             <h3 class="text-xl text-gray-900 font-bold">Post's Visualization</h3>
@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div class="col-span-3 mt-5">
-                        <div class="shadow bg-white md:rounded-md">
+                        <div class="bg-white md:rounded-md">
                             <p class="text-2xl font-semibold">Title:</p>
                             <p>{{post.title}}</p>
                             <hr class="my-2">
@@ -24,9 +24,9 @@
                             <p class="text-2xl font-semibold">Description:</p>
                             <p v-html="post.description"></p>
 
-                            <div class="my-6 mx-auto">
+                            <div class="my-6 flex justify-center">
                                 <inertia-link
-                                    class="bg-indigo-500 text-white font-bold py-2 px-4 mx-auto rounded-md w-1/2 md:w-2/5 hover:bg-indigo-800 text-center md:text-left"
+                                    class="bg-indigo-500 text-white font-bold py-2 px-4 mx-2 rounded-md hover:bg-indigo-800"
                                     :href="route('index')">
                                     Go back
                                 </inertia-link>

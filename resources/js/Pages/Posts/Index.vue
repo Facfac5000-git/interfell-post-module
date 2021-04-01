@@ -1,50 +1,47 @@
 <template>
     <partial-header/>
 
-    <section class="text-gray-600 body-font overflow-hidden py-24">
+    <section class="text-gray-600 body-font overflow-hidden pt-24 pb-8">
 
         <div class="max-w-7xl mx-auto">
-            <p class="text-4xl font-bold text-gray-900">Welcome back, {{$page.props.user.name}}!</p>
+            <p class="m-4 text-4xl font-bold text-gray-900">Welcome back, {{$page.props.user.name}}!</p>
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg m-4 pt-4">
-                <div class="md:grid md:grid-cols-3 md:gap-6 ">
-                    <div class="col-span-2">
+                <div class="grid grid-cols-3 px-2 md:px-4 ">
+                    <div class="col-span-3 md:col-span-2">
                         <div class="px-4 sm:px0">
                             <h3 class="text-xl text-gray-900 font-bold">Post's List</h3>
                             <p class="text-sm text-gray-600">Here you can watch every post you made to contribute to our community!</p>
                         </div>
                     </div>
-                    <div class="col-span-1">
-                        <div class="flex justify-end mb-6">
+                    <div class="col-span-3 md:col-span-1">
+                        <div class="flex justify-end my-4">
                             <inertia-link :href="route('posts.create')"
-                                          class="bg-indigo-500 text-white font-bold py-2 px-4 mx-auto rounded-md w-1/2 md:w-2/5 hover:bg-indigo-800 text-center md:text-left">
-                                Crear nuevo post
+                                          class="bg-indigo-500 text-white font-bold py-2 px-4 mx-auto md:ml-auto md:mx-0 rounded-md hover:bg-indigo-800">
+                                Create new post
                             </inertia-link>
                         </div>
                     </div>
+
                     <div class="col-span-3 mt-5">
-                        <div class="shadow bg-white md:rounded-md">
+                        <table class="w-full text-center">
                             <tr>
-                                <th class="border p-2 w-1/2">Post's Title</th>
-                                <th class="border p-2 w-1/2">Publication Date</th>
-                                <th class="border p-2 w-1/6">Action</th>
+                                <th class="border p-2">Post's Title</th>
+                                <th class="border p-2">Publication Date</th>
+                                <th class="border p-2">Action</th>
                             </tr>
-                        </div>
-                        <div class="shadow bg-white md:rounded-md" v-for="post in posts.data">
-                            <tr>
-                                <td class="border p-2 w-1/2">
-                                    {{ post.title }}
-                                </td>
-                                <td class="border p-2 w-1/2">
-                                    {{ post.publication_date }}
-                                </td>
-                                <td class="border p-2 w-1/6" >
-                                    <inertia-link :href="route('posts.show', post)" class="hover:text-green-500">
+                            <tr v-for="post in posts.data">
+                                <td class="border px-1 py-3">{{ post.title }}</td>
+                                <td class="border px-1 py-3">{{ post.publication_date }}</td>
+                                <td class="border px-1 py-3">
+                                    <inertia-link :href="route('posts.show', post)" class="hover:text-indigo-700 text-indigo-400">
                                         Look it!
                                     </inertia-link>
                                 </td>
                             </tr>
-                        </div>
+                        </table>
                     </div>
+
+
 
                     <div class="col-span-3 my-3">
                         <nav class="flex justify-center">
@@ -81,7 +78,7 @@
 
 <style scoped>
 
-    active{
+    .active{
         font-weight: bold;
     }
 

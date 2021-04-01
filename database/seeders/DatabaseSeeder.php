@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('Interfell2021')
         ]);
 
-        Post::factory(150)->create();
+        User::factory(9)->create();
+
+        Post::factory(1200)->create();
     }
 }

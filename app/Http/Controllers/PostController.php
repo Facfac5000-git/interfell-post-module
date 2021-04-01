@@ -36,6 +36,9 @@ class PostController extends Controller
 
     public function show($post_id){
         $post = Post::find($post_id);
+        if($post->user->id !== Auth::id()){
+            return redirect()->route('index');
+        }
         return Inertia::render('Posts/Show', ['post' => $post]);
     }
 

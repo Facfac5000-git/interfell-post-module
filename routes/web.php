@@ -36,4 +36,5 @@ Route::get('posts/show/{post_id}', [PostController::class, 'show'])
 Route::get('posts/{user_id}', [PostController::class, 'getPagebyUser'])
     ->middleware('auth:sanctum');
 
-Route::get('fetch', [PostController::class, 'fetch']);
+//This route is just for situational purposes, if there is a case where you need to take the last posts manually you can uncomment and use it from here
+//Route::get('fetch', [PostController::class, 'fetch']);

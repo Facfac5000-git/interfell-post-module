@@ -1,12 +1,12 @@
 <template>
     <partial-header/>
 
-    <section class="text-gray-600 body-font overflow-hidden py-24">
+    <section class="text-gray-600 body-font overflow-hidden pt-24 pb-8">
 
         <div class="max-w-7xl mx-auto">
-            <p class="text-4xl font-bold text-gray-900">¡Welcome, {{$page.props.user.name}}!</p>
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg m-4 pt-4">
-                <div class="md:grid md:grid-cols-3 md:gap-6 ">
+            <p class="m-4 text-4xl font-bold text-gray-900">¡Welcome, {{$page.props.user.name}}!</p>
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg m-4 p-4">
+                <div class="grid grid-cols-3">
                     <div class="col-span-3">
                         <div class="px-4 sm:px0">
                             <h3 class="text-xl text-gray-900 font-bold">New Post</h3>
@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div class="col-span-3 mt-5">
-                        <div class="shadow bg-white md:rounded-md">
+                        <div class="bg-white md:rounded-md">
                             <form @submit.prevent="submit">
                                 <div class="mb-4">
                                     <label for="title" class="block font-medium text-sm text-gray-700">Title:</label>
@@ -25,11 +25,11 @@
                                     <quill-editor theme="snow"></quill-editor>
                                 </div>
 
-                                <div class="mb-4">
-                                    <input type="submit" value="Save" class="bg-indigo-500 hover:bg-indigo-800 text-white font-bold mx-6 py-2 px-4 rounded-md cursor-pointer">
+                                <div class="mb-4 flex justify-center">
+                                    <input type="submit" value="Save" class="bg-indigo-500 hover:bg-indigo-800 text-white font-bold py-2 px-4 mx-2 rounded-md cursor-pointer">
 
                                     <inertia-link
-                                        class="bg-indigo-500 text-white font-bold py-2 px-4 mx-auto rounded-md w-1/2 md:w-2/5 hover:bg-indigo-800 text-center md:text-left"
+                                        class="bg-indigo-500 text-white font-bold py-2 px-4 mx-2 rounded-md hover:bg-indigo-800"
                                         :href="route('index')">
                                         Go back
                                     </inertia-link>

@@ -26,7 +26,7 @@ class PostFactory extends Factory
             'title' => $this->faker->text(40),
             'description' => $this->faker->text(300),
             'publication_date' => Carbon::now(),
-            'user_id' => rand(1,2)
+            'user_id' => rand(2,10)
         ];
     }
 }
